@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 200 20% 98%;
+    --foreground: 210 30% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 210 30% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 30% 15%;
+    --primary: 199 100% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 64% 36%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 200 20% 94%;
+    --muted-foreground: 210 10% 45%;
+    --accent: 45 93% 58%;
+    --accent-foreground: 210 30% 15%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 200 20% 88%;
+    --input: 200 20% 88%;
+    --ring: 199 100% 45%;
+    --radius: 0.75rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --medical-blue: 199 100% 45%;
+    --medical-green: 160 64% 36%;
+    --medical-light: 200 20% 97%;
+    --medical-highlight: 45 93% 58%;
+    --medical-teal: 174 72% 40%;
+    --medical-rose: 340 82% 52%;
+  }
+
+  .dark {
+    --background: 210 30% 8%;
+    --foreground: 200 20% 95%;
+    --card: 210 30% 12%;
+    --card-foreground: 200 20% 95%;
+    --popover: 210 30% 12%;
+    --popover-foreground: 200 20% 95%;
+    --primary: 199 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 160 64% 40%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 210 30% 18%;
+    --muted-foreground: 200 15% 60%;
+    --accent: 45 93% 58%;
+    --accent-foreground: 210 30% 15%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 210 30% 22%;
+    --input: 210 30% 22%;
+    --ring: 199 100% 50%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-2xl shadow-lg;
+  }
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary to-medical-teal;
+  }
+  .gradient-hero {
+    background: linear-gradient(135deg, hsl(var(--primary) / 0.08) 0%, hsl(var(--medical-green) / 0.06) 50%, hsl(var(--medical-teal) / 0.04) 100%);
+  }
+  .glow-btn {
+    @apply relative overflow-hidden transition-all duration-300;
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4);
+  }
+  .glow-btn:hover {
+    box-shadow: 0 0 20px 4px hsl(var(--primary) / 0.3);
+    transform: translateY(-1px);
+  }
+  .cursor-glow {
+    @apply transition-all duration-200;
+  }
+  .cursor-glow:hover {
+    filter: brightness(1.05);
+  }
+  .float-animation {
+    animation: float 6s ease-in-out infinite;
+  }
+  .pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 5px hsl(var(--primary) / 0.3); }
+  50% { box-shadow: 0 0 20px hsl(var(--primary) / 0.5); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
